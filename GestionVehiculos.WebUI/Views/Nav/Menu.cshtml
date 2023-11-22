@@ -1,0 +1,13 @@
+﻿@model IEnumerable<string>
+
+@Html.ActionLink("Inicio","ListaCoches","Coches",null,
+new { @class = "btn btn-block btn-default btn-lg" })
+@foreach(var link in Model) {   
+    @Html.RouteLink(link,new {
+        controller = "Coches",
+        action = "ListaCoches",      
+        page = 1
+    },new {
+        @class = "btn btn-block btn-default btn-lg"
+    })
+}

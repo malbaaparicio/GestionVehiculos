@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VehiculosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Clienteid" />
+          </Key>
+          <Property Name="Clienteid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="255" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="255" />
+          <Property Name="NIF" Type="varchar" MaxLength="255" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
+          <Property Name="Dirección" Type="varchar" MaxLength="255" />
+          <Property Name="Localidad" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Coches">
+          <Key>
+            <PropertyRef Name="Cocheid" />
+          </Key>
+          <Property Name="Cocheid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="255" />
+          <Property Name="Modelo" Type="varchar" MaxLength="255" />
+          <Property Name="Matricula" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Delegaciones">
+          <Key>
+            <PropertyRef Name="Delegacionid" />
+          </Key>
+          <Property Name="Delegacionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="255" />
+          <Property Name="Direccion" Type="varchar" MaxLength="255" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
+          <Property Name="Localidad" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="Reservarid" />
+          </Key>
+          <Property Name="Reservarid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaReserva" Type="datetime" Nullable="false" />
+          <Property Name="Clienteid" Type="int" Nullable="false" />
+          <Property Name="CentroRecogidaid" Type="int" Nullable="false" />
+          <Property Name="FechaDevolucion" Type="datetime" />
+          <Property Name="CentroDevolucionid" Type="int" />
+          <Property Name="Vehiculoid" Type="int" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="255" />
+          <Property Name="DepositoLleno" Type="bit" />
+        </EntityType>
+        <Association Name="FK__Reservas__Centro__4E88ABD4">
+          <End Role="Delegaciones" Type="Self.Delegaciones" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delegaciones">
+              <PropertyRef Name="Delegacionid" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="CentroRecogidaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__Centro__4F7CD00D">
+          <End Role="Delegaciones" Type="Self.Delegaciones" Multiplicity="0..1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delegaciones">
+              <PropertyRef Name="Delegacionid" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="CentroDevolucionid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__Deposi__4D94879B">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Clienteid" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="Clienteid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__Vehicu__5070F446">
+          <End Role="Coches" Type="Self.Coches" Multiplicity="0..1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coches">
+              <PropertyRef Name="Cocheid" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="Vehiculoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VehiculosModelStoreContainer">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coches" EntityType="Self.Coches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Delegaciones" EntityType="Self.Delegaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservas" EntityType="Self.Reservas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Reservas__Centro__4E88ABD4" Association="Self.FK__Reservas__Centro__4E88ABD4">
+            <End Role="Delegaciones" EntitySet="Delegaciones" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__Centro__4F7CD00D" Association="Self.FK__Reservas__Centro__4F7CD00D">
+            <End Role="Delegaciones" EntitySet="Delegaciones" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__Deposi__4D94879B" Association="Self.FK__Reservas__Deposi__4D94879B">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__Vehicu__5070F446" Association="Self.FK__Reservas__Vehicu__5070F446">
+            <End Role="Coches" EntitySet="Coches" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VehiculosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Coches">
+          <Key>
+            <PropertyRef Name="Cocheid" />
+          </Key>
+          <Property Name="Cocheid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Modelo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Matricula" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reservas" Relationship="VehiculosModel.FK__Reservas__Vehicu__5070F446" FromRole="Coches" ToRole="Reservas" />
+        </EntityType>
+        <EntityContainer Name="VehiculosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Coches" EntityType="Self.Coches" />
+          <EntitySet Name="Clientes" EntityType="VehiculosModel.Clientes" />
+          <EntitySet Name="Delegaciones" EntityType="VehiculosModel.Delegaciones" />
+          <EntitySet Name="Reservas" EntityType="VehiculosModel.Reservas" />
+          <AssociationSet Name="FK__Reservas__Deposi__4D94879B" Association="VehiculosModel.FK__Reservas__Deposi__4D94879B">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__Vehicu__5070F446" Association="VehiculosModel.FK__Reservas__Vehicu__5070F446">
+            <End Role="Coches" EntitySet="Coches" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__Centro__4E88ABD4" Association="VehiculosModel.FK__Reservas__Centro__4E88ABD4">
+            <End Role="Delegaciones" EntitySet="Delegaciones" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__Centro__4F7CD00D" Association="VehiculosModel.FK__Reservas__Centro__4F7CD00D">
+            <End Role="Delegaciones" EntitySet="Delegaciones" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Clienteid" />
+          </Key>
+          <Property Name="Clienteid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NIF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Dirección" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Localidad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reservas" Relationship="VehiculosModel.FK__Reservas__Deposi__4D94879B" FromRole="Clientes" ToRole="Reservas" />
+        </EntityType>
+        <EntityType Name="Delegaciones">
+          <Key>
+            <PropertyRef Name="Delegacionid" />
+          </Key>
+          <Property Name="Delegacionid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Localidad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ReservasEntregas" Relationship="VehiculosModel.FK__Reservas__Centro__4E88ABD4" FromRole="Delegaciones" ToRole="Reservas" />
+          <NavigationProperty Name="ReservasRecogidas" Relationship="VehiculosModel.FK__Reservas__Centro__4F7CD00D" FromRole="Delegaciones" ToRole="Reservas" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="Reservarid" />
+          </Key>
+          <Property Name="Reservarid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaReserva" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Clienteid" Type="Int32" Nullable="false" />
+          <Property Name="CentroRecogidaid" Type="Int32" Nullable="false" />
+          <Property Name="FechaDevolucion" Type="DateTime" Precision="3" />
+          <Property Name="CentroDevolucionid" Type="Int32" />
+          <Property Name="Vehiculoid" Type="Int32" />
+          <Property Name="Observaciones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DepositoLleno" Type="Boolean" />
+          <NavigationProperty Name="Clientes" Relationship="VehiculosModel.FK__Reservas__Deposi__4D94879B" FromRole="Reservas" ToRole="Clientes" />
+          <NavigationProperty Name="Coches" Relationship="VehiculosModel.FK__Reservas__Vehicu__5070F446" FromRole="Reservas" ToRole="Coches" />
+          <NavigationProperty Name="DelegacionesEntrega" Relationship="VehiculosModel.FK__Reservas__Centro__4E88ABD4" FromRole="Reservas" ToRole="Delegaciones" />
+          <NavigationProperty Name="DelegacionesRecogida" Relationship="VehiculosModel.FK__Reservas__Centro__4F7CD00D" FromRole="Reservas" ToRole="Delegaciones" />
+        </EntityType>
+        <Association Name="FK__Reservas__Deposi__4D94879B">
+          <End Type="VehiculosModel.Clientes" Role="Clientes" Multiplicity="1" />
+          <End Type="VehiculosModel.Reservas" Role="Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Clienteid" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="Clienteid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__Vehicu__5070F446">
+          <End Type="VehiculosModel.Coches" Role="Coches" Multiplicity="0..1" />
+          <End Type="VehiculosModel.Reservas" Role="Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coches">
+              <PropertyRef Name="Cocheid" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="Vehiculoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__Centro__4E88ABD4">
+          <End Type="VehiculosModel.Delegaciones" Role="Delegaciones" Multiplicity="1" />
+          <End Type="VehiculosModel.Reservas" Role="Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delegaciones">
+              <PropertyRef Name="Delegacionid" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="CentroRecogidaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__Centro__4F7CD00D">
+          <End Type="VehiculosModel.Delegaciones" Role="Delegaciones" Multiplicity="0..1" />
+          <End Type="VehiculosModel.Reservas" Role="Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delegaciones">
+              <PropertyRef Name="Delegacionid" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="CentroDevolucionid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VehiculosModelStoreContainer" CdmEntityContainer="VehiculosEntities">
+          <EntitySetMapping Name="Coches">
+            <EntityTypeMapping TypeName="VehiculosModel.Coches">
+              <MappingFragment StoreEntitySet="Coches">
+                <ScalarProperty Name="Cocheid" ColumnName="Cocheid" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="VehiculosModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clienteid" ColumnName="Clienteid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Delegaciones">
+            <EntityTypeMapping TypeName="VehiculosModel.Delegaciones">
+              <MappingFragment StoreEntitySet="Delegaciones">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Delegacionid" ColumnName="Delegacionid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservas">
+            <EntityTypeMapping TypeName="VehiculosModel.Reservas">
+              <MappingFragment StoreEntitySet="Reservas">
+                <ScalarProperty Name="DepositoLleno" ColumnName="DepositoLleno" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Vehiculoid" ColumnName="Vehiculoid" />
+                <ScalarProperty Name="CentroDevolucionid" ColumnName="CentroDevolucionid" />
+                <ScalarProperty Name="FechaDevolucion" ColumnName="FechaDevolucion" />
+                <ScalarProperty Name="CentroRecogidaid" ColumnName="CentroRecogidaid" />
+                <ScalarProperty Name="Clienteid" ColumnName="Clienteid" />
+                <ScalarProperty Name="FechaReserva" ColumnName="FechaReserva" />
+                <ScalarProperty Name="Reservarid" ColumnName="Reservarid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

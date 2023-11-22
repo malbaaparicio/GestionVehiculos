@@ -1,0 +1,31 @@
+﻿@model GestionVehiculos.Domain.Coches
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Ver @Model.Matricula</h3>
+    </div>
+    @using(Html.BeginForm()) {
+        <div class="panel-body">
+            @Html.HiddenFor(z => z.Cocheid)
+            @foreach(var property in ViewData.ModelMetadata.Properties) {
+                if(property.PropertyName != "Cocheid") {
+                    <div class="form-group">
+                        <label>@property.PropertyName</label>
+                        @Html.TextBox(property.PropertyName,null,new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                }
+            }
+
+        </div>
+
+
+
+        <div class="panel-footer">           
+            @Html.ActionLink("Volver","ListaCoches","Coches",null,new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

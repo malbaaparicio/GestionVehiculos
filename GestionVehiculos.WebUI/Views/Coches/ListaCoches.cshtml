@@ -1,0 +1,36 @@
+﻿@model GestionVehiculos.WebUI.Models.ListaCochesPaginado
+@using GestionVehiculos.WebUI.HtmlHelpers
+
+
+@{
+    ViewBag.Title = "VistaCoches";
+}
+
+<h2>VistaCoches</h2>
+<p>
+    @Html.ActionLink("Nuevo", "Create", "Coches", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Restablecer vista", "ListaCoches", new { page = 1 }, new { @class = "selected btn btn-primary" })
+   
+</p>
+
+
+@Html.Partial("CochesSummary", Model)
+
+
+<div>
+    @for (int i = 1; i <= Model.pagingInfo.TotalPages; i++)
+    {
+        if (Model.pagingInfo.CurrentPage == i)
+        {
+            @Html.ActionLink(i.ToString(), "ListaCoches", new {filtro = Model.filtro, valor = Model.terminoBusqueda, page = i }, new { @class = "selected btn btn-primary" });
+        }
+        else
+        {
+            @Html.ActionLink(i.ToString(), "ListaCoches", new { filtro = Model.filtro, valor = Model.terminoBusqueda, page = i }, new { @class = "btn btn-default" });
+        }
+
+    }
+    @*@Html.PageLinks(Model.pagingInfo, x => Url.Action("ListaCoches", new { page = x }))*@
+
+</div>
+
