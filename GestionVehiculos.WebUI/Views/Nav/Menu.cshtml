@@ -2,10 +2,23 @@
 
 @Html.ActionLink("Inicio","ListaCoches","Coches",null,
 new { @class = "btn btn-block btn-default btn-lg" })
-@foreach(var link in Model) {   
+@foreach(var link in Model) {
+    string controllerName = "";
+    string actionName = "";
+    if(link == "Vehículos")
+    {
+        controllerName = "Coches";
+        actionName = "ListaCoches";
+    }
+    else if(link == "Clientes")
+    {
+        controllerName = "Clientes";
+        actionName = "ListaClientes";
+    }
+
     @Html.RouteLink(link,new {
-        controller = "Coches",
-        action = "ListaCoches",      
+        controller = controllerName,
+        action = actionName,
         page = 1
     },new {
         @class = "btn btn-block btn-default btn-lg"

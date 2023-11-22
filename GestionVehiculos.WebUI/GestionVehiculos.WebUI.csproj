@@ -175,12 +175,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CochesController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
+    <Compile Include="Models\ListaClientesPaginado.cs" />
     <Compile Include="Models\ListaCochesPaginado.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +199,8 @@
     <Content Include="Views\Coches\Edit.cshtml" />
     <Content Include="Views\Coches\Create.cshtml" />
     <Content Include="Views\Coches\Ver.cshtml" />
+    <Content Include="Views\Clientes\ListaClientes.cshtml" />
+    <Content Include="Views\Shared\ClientesSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

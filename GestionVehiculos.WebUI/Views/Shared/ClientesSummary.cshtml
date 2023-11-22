@@ -1,0 +1,58 @@
+﻿@model GestionVehiculos.WebUI.Models.ListaClientesPaginado
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre
+                
+            </th>
+            <th scope="col">Apellidos
+                
+            </th>
+            <th scope="col">NIF
+                
+            </th>
+            <th scope="col">Teléfono
+                
+            </th>
+            <th scope="col">Email
+                
+            </th>
+            <th scope="col"></th>
+            <th scope="col">Acciones</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model.clientes)
+        {
+            <tr>
+                <th scope="row">@cliente.Clienteid</th>
+                <td>@cliente.Nombre</td>
+                <td>@cliente.Apellidos</td>
+                <td>@cliente.NIF</td>
+                <td>@cliente.Telefono</td>
+                <td>@cliente.Email</td>
+                
+                <td>
+                    @Html.ActionLink("Ver", "Ver", "Coches", new { cliente.Clienteid }, new { @class = "btn btn-success far fa-eye" })
+
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", "Coches", new { cliente.Clienteid }, new { @class = "btn btn-warning fas fa-edit" })
+                </td>
+                <td>
+                    @using (Html.BeginForm("Borrar", "Coches", FormMethod.Post))
+                    {
+                        @Html.Hidden("Cocheid", cliente.Clienteid);
+                        <input type="submit"
+                               class="btn btn-danger far fa-trash-alt"
+                               value="Borrar" />
+                    }
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

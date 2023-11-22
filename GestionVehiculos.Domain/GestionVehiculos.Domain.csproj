@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IClientes.cs" />
     <Compile Include="Abstract\ICoches.cs" />
     <Compile Include="Clientes.cs">
       <DependentUpon>vehiculosModel.tt</DependentUpon>
@@ -77,6 +78,7 @@
     <Compile Include="Coches.cs">
       <DependentUpon>vehiculosModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Concrete\GestionaClientes.cs" />
     <Compile Include="Concrete\GestionaCoches.cs" />
     <Compile Include="Delegaciones.cs">
       <DependentUpon>vehiculosModel.tt</DependentUpon>
