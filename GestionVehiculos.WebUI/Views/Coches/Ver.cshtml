@@ -12,7 +12,7 @@
         <div class="panel-body">
             @Html.HiddenFor(z => z.Cocheid)
             @foreach(var property in ViewData.ModelMetadata.Properties) {
-                if(property.PropertyName != "Cocheid") {
+                if(property.PropertyName != "Cocheid" && property.PropertyName != "Reservas") {
                     <div class="form-group">
                         <label>@property.PropertyName</label>
                         @Html.TextBox(property.PropertyName,null,new { @class = "form-control", @readonly = "readonly" })
