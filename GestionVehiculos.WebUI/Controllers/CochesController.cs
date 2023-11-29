@@ -48,7 +48,7 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaCochesPaginado = new ListaCochesPaginado()
                 {
                     coches = coches.GetCoches.
-                    Where(p => valor == null || p.Marca == valor).
+                    Where(p => valor == null || p.Marca.ToLower() == valor.ToLower()).
                     OrderBy(z => z.Cocheid).
                     Skip((page - 1) * pageSize).
                     Take(pageSize),
@@ -59,7 +59,7 @@ namespace GestionVehiculos.WebUI.Controllers
                         ItemsPerPage = pageSize,
                         TotalItems = valor == null ?
                     coches.GetCoches.Count() :
-                    coches.GetCoches.Where(z => z.Marca == valor).Count()
+                    coches.GetCoches.Where(z => z.Marca.ToLower() == valor.ToLower()).Count()
                     },
                     filtro = filtro,
                     terminoBusqueda = valor
@@ -71,7 +71,7 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaCochesPaginado = new ListaCochesPaginado()
                 {
                     coches = coches.GetCoches.
-                    Where(p => valor == null || p.Modelo == valor).
+                    Where(p => valor == null || p.Modelo.ToLower() == valor.ToLower()).
                     OrderBy(z => z.Cocheid).
                     Skip((page - 1) * pageSize).
                     Take(pageSize),
@@ -82,7 +82,7 @@ namespace GestionVehiculos.WebUI.Controllers
                         ItemsPerPage = pageSize,
                         TotalItems = valor == null ?
                     coches.GetCoches.Count() :
-                    coches.GetCoches.Where(z => z.Modelo == valor).Count()
+                    coches.GetCoches.Where(z => z.Modelo.ToLower() == valor.ToLower()).Count()
                     },
                     filtro = filtro,
                     terminoBusqueda = valor
@@ -94,7 +94,7 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaCochesPaginado = new ListaCochesPaginado()
                 {
                     coches = coches.GetCoches.
-                    Where(p => valor == null || p.Matricula == valor).
+                    Where(p => valor == null || p.Matricula.ToLower() == valor.ToLower()).
                     OrderBy(z => z.Cocheid).
                     Skip((page - 1) * pageSize).
                     Take(pageSize),
@@ -105,7 +105,7 @@ namespace GestionVehiculos.WebUI.Controllers
                         ItemsPerPage = pageSize,
                         TotalItems = valor == null ?
                     coches.GetCoches.Count() :
-                    coches.GetCoches.Where(z => z.Matricula == valor).Count()
+                    coches.GetCoches.Where(z => z.Matricula.ToLower() == valor.ToLower()).Count()
                     },
                     filtro = filtro,
                     terminoBusqueda = valor

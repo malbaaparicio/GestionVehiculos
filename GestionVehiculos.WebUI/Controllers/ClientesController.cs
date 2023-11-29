@@ -29,9 +29,9 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaClientesPaginado = new ListaClientesPaginado()
                 {
                     clientes = clientes.GetClientes.
-                   OrderBy(z => z.Clienteid).
-                   Skip((page - 1) * pageSize).
-                   Take(pageSize),
+                    OrderBy(z => z.Clienteid).
+                    Skip((page - 1) * pageSize).
+                    Take(pageSize),
 
                     pagingInfo = new PagingInfo()
                     {
@@ -48,25 +48,117 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaClientesPaginado = new ListaClientesPaginado()
                 {
                     clientes = clientes.GetClientes.
-                   Where(p => valor == null || p.Nombre == valor).
-                   OrderBy(z => z.Clienteid).
-                   Skip((page - 1) * pageSize).
-                   Take(pageSize),
+                    Where(p => valor == null || p.Nombre.ToLower() == valor.ToLower()).
+                    OrderBy(z => z.Clienteid).
+                    Skip((page - 1) * pageSize).
+                    Take(pageSize),
 
                     pagingInfo = new PagingInfo()
                     {
                         CurrentPage = page,
                         ItemsPerPage = pageSize,
                         TotalItems = valor == null ?
-                   clientes.GetClientes.Count() :
-                   clientes.GetClientes.Where(z => z.Nombre == valor).Count()
+                    clientes.GetClientes.Count() :
+                    clientes.GetClientes.Where(z => z.Nombre.ToLower() == valor.ToLower()).Count()
                     },
                     filtro = filtro,
                     terminoBusqueda = valor
 
                 };
             }
-            
+            else if(filtro == "Apellidos")
+            {
+                listaClientesPaginado = new ListaClientesPaginado()
+                {
+                    clientes = clientes.GetClientes.
+                    Where(p => valor == null || p.Apellidos.ToLower().Contains(valor.ToLower())).
+                    OrderBy(z => z.Clienteid).
+                    Skip((page - 1) * pageSize).
+                    Take(pageSize),
+
+                    pagingInfo = new PagingInfo()
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = pageSize,
+                        TotalItems = valor == null ?
+                    clientes.GetClientes.Count() :
+                    clientes.GetClientes.Where(z => z.Apellidos.ToLower().Contains(valor.ToLower())).Count()
+                    },
+                    filtro = filtro,
+                    terminoBusqueda = valor
+
+                };
+            }
+            else if (filtro == "Nif")
+            {
+                listaClientesPaginado = new ListaClientesPaginado()
+                {
+                    clientes = clientes.GetClientes.
+                    Where(p => valor == null || p.NIF.ToLower() == valor.ToLower()).
+                    OrderBy(z => z.Clienteid).
+                    Skip((page - 1) * pageSize).
+                    Take(pageSize),
+
+                    pagingInfo = new PagingInfo()
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = pageSize,
+                        TotalItems = valor == null ?
+                    clientes.GetClientes.Count() :
+                    clientes.GetClientes.Where(z => z.NIF.ToLower() == valor.ToLower()).Count()
+                    },
+                    filtro = filtro,
+                    terminoBusqueda = valor
+
+                };
+            }
+            else if (filtro == "Telefono")
+            {
+                listaClientesPaginado = new ListaClientesPaginado()
+                {
+                    clientes = clientes.GetClientes.
+                    Where(p => valor == null || p.Telefono.ToLower() == valor.ToLower()).
+                    OrderBy(z => z.Clienteid).
+                    Skip((page - 1) * pageSize).
+                    Take(pageSize),
+
+                    pagingInfo = new PagingInfo()
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = pageSize,
+                        TotalItems = valor == null ?
+                    clientes.GetClientes.Count() :
+                    clientes.GetClientes.Where(z => z.Telefono.ToLower() == valor.ToLower()).Count()
+                    },
+                    filtro = filtro,
+                    terminoBusqueda = valor
+
+                };
+            }
+            else if (filtro == "Email")
+            {
+                listaClientesPaginado = new ListaClientesPaginado()
+                {
+                    clientes = clientes.GetClientes.
+                    Where(p => valor == null || p.Email.ToLower() == valor.ToLower()).
+                    OrderBy(z => z.Clienteid).
+                    Skip((page - 1) * pageSize).
+                    Take(pageSize),
+
+                    pagingInfo = new PagingInfo()
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = pageSize,
+                        TotalItems = valor == null ?
+                    clientes.GetClientes.Count() :
+                    clientes.GetClientes.Where(z => z.Email.ToLower() == valor.ToLower()).Count()
+                    },
+                    filtro = filtro,
+                    terminoBusqueda = valor
+
+                };
+            }
+
 
             return View(listaClientesPaginado);
         }
