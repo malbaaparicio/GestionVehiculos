@@ -1,0 +1,37 @@
+﻿@model GestionVehiculos.Domain.Clientes
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Editar @Model.Nombre @Model.Apellidos</h3>
+    </div>
+    @using (Html.BeginForm("Edit", "Clientes", FormMethod.Post))
+    {
+        <div class="panel-body">
+            @Html.HiddenFor(z => z.Clienteid)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                if (property.PropertyName != "Clienteid" && property.PropertyName != "Reservas")
+                {
+                    <div class="form-group col-md-6">
+                        <label>@property.PropertyName</label>
+                        @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                    </div>
+                }
+            }
+
+        </div>
+
+
+
+        <div class="panel-footer">
+            <input type="submit" value="Guardar" class="btn btn-primary" />
+            @Html.ActionLink("Cancelar", "ListaClientes", "Clientes", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>
+
+

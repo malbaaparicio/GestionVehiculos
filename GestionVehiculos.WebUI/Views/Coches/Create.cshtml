@@ -9,6 +9,7 @@
         <h3>Crear nuevo vehículo</h3>
     </div>
     @using(Html.BeginForm("Create","Coches",FormMethod.Post)) {
+       
         <div class="panel-body">           
             @foreach(var property in ViewData.ModelMetadata.Properties) {
                 if(property.PropertyName != "Cocheid" && property.PropertyName != "Reservas") {

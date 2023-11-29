@@ -16,7 +16,8 @@
                                 <div class="form-group">
                                     <input type="text" name="valor" class="form-control" id="fmMarca" placeholder="Buscar" autocomplete="off" 
                                            required="" oninvalid="this.setCustomValidity('Por favor, introduzca un término de búsqueda')" oninput="setCustomValidity('')">
-                                    <input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">
+                                    @*<input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">*@        
+                                    @Html.Hidden("filtro","Marca", new {@class = "form-control"})
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-default">Aplicar</button>

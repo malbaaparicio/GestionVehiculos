@@ -15,7 +15,8 @@ namespace GestionVehiculos.WebUI.Controllers
         public ICoches coches;
         public int pageSize = 8;
 
-        public CochesController(ICoches coches) {
+        public CochesController(ICoches coches)
+        {
             this.coches = coches;
         }
         // GET: GetCoches

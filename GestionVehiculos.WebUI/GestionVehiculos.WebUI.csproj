@@ -201,6 +201,9 @@
     <Content Include="Views\Coches\Ver.cshtml" />
     <Content Include="Views\Clientes\ListaClientes.cshtml" />
     <Content Include="Views\Shared\ClientesSummary.cshtml" />
+    <Content Include="Views\Clientes\Ver.cshtml" />
+    <Content Include="Views\Clientes\Edit.cshtml" />
+    <Content Include="Views\Clientes\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
