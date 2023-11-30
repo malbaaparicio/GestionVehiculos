@@ -18,8 +18,9 @@ namespace GestionVehiculos.WebUI.Controllers
                 "Reservas"
             };
         }
-        public PartialViewResult Menu() {
-            return PartialView(categorias);
+        public PartialViewResult Menu(bool horizontalLayout = false) {           
+            string viewName = horizontalLayout ? "MenuHorizontal" : "Menu";
+            return PartialView(viewName, categorias);
         }
      
     }
