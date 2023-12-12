@@ -204,6 +204,7 @@
     <Content Include="Views\Clientes\Ver.cshtml" />
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Create.cshtml" />
+    <Content Include="Views\Nav\MenuHorizontal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
