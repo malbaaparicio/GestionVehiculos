@@ -11,33 +11,18 @@
     <script src="~/Scripts/jquery-1.9.1.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <style>
-        .navbar-right {
-            float: right !important;
-            margin-right: 15px;
-            margin-left: 15px;
-        }
-    </style>
+    
 </head>
 <body>
     <div class="navbar navbar-inverse" role="navigation">
-        <a class="navbar-brand" href="#">
-            <span class="hidden-xs">GESTIÓN DE VEHÍCULOS</span>
-            <div class="visible-xs">GESTIÓN</div>
-            <div class="visible-xs">VEHÍCULOS</div>
-        </a>
-    </div>     
-
-    <div class="visible-xs">
-        @Html.Action("Menu", "Nav", new { horizontalLayout = true })
+        <a class="navbar-brand" href="#">GESTIÓN DE VEHÍCULOS</a>
     </div>
     <div class="row panel">
-        <div id="categories" class="col-sm-3 hidden-xs">
+        <div id="categories" class="col-xs-3">
             @Html.Action("Menu", "Nav")
         </div>
-        <div class="col-xs-12 col-sm-8">
-            @if (TempData["mensaje"] != null)
-            {
+        <div class="col-xs-8">
+            @if(TempData["mensaje"] != null) {
                 <div class="alert alert-success">@TempData["mensaje"]</div>
             }
             @RenderBody()
@@ -47,7 +32,7 @@
             </footer>
         </div>
     </div>
-
+    
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
