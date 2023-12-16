@@ -5,36 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <script src="~/Scripts/jquery-1.9.1.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <style>
-        .navbar-right {
-            float: right !important;
-            margin-right: 15px;
-            margin-left: 15px;
-        }
-    </style>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+
 </head>
 <body>
-    <div class="navbar navbar-inverse" role="navigation">
-        <a class="navbar-brand" href="#">
-            <span class="hidden-xs">GESTIÓN DE VEHÍCULOS</span>
-            <div class="visible-xs">GESTIÓN</div>
-            <div class="visible-xs">VEHÍCULOS</div>
-        </a>
-    </div>     
+    <div class="container-md">
+        <nav class="navbar bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="~/Images/logo.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    GESTIÓN DE VEHÍCULOS
+                </a>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        @Html.Action("Menu", "Nav")
+                    </div>
+                </div>
+            </div>
+        </nav>
 
-    <div class="visible-xs">
-        @Html.Action("Menu", "Nav", new { horizontalLayout = true })
-    </div>
-    <div class="row panel">
-        <div id="categories" class="col-sm-3 hidden-xs">
-            @Html.Action("Menu", "Nav")
-        </div>
         <div class="col-xs-12 col-sm-8">
             @if (TempData["mensaje"] != null)
             {
@@ -46,10 +40,32 @@
                 <p>&copy; @DateTime.Now.Year - Aplicación desarrollada por <a href="https://www.linkedin.com/in/miguel-alba-aparicio-39a45499/">Miguel Alba Aparicio</a></p>
             </footer>
         </div>
+
+        @*<div class="navbar navbar-expand-lg bg-body-tertiary">
+                <a class="navbar-brand" href="#">
+                    <span>GESTIÓN DE VEHÍCULOS</span>
+
+                </a>
+            </div>
+
+
+            <div class="row panel">
+                <div id="categories" class="col-sm-3">
+                    @Html.Action("Menu", "Nav")
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    @if (TempData["mensaje"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["mensaje"]</div>
+                    }
+                    @RenderBody()
+                    <hr />
+                    <footer>
+                        <p>&copy; @DateTime.Now.Year - Aplicación desarrollada por <a href="https://www.linkedin.com/in/miguel-alba-aparicio-39a45499/">Miguel Alba Aparicio</a></p>
+                    </footer>
+                </div>
+            </div>*@
     </div>
-
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>
