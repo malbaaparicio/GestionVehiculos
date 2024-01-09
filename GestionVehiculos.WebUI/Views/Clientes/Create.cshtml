@@ -11,26 +11,24 @@
     @using (Html.BeginForm("Create", "Clientes", FormMethod.Post))
     {
 
-        <div class="panel-body">
+        <div class="row g-3">
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
                 if (property.PropertyName != "Clienteid" && property.PropertyName != "Reservas")
                 {
-                    <div class="form-group col-md-6">
-                        <label>@property.PropertyName</label>
+                    <div class="col-md-6">
+                        <label class="form-label">@property.PropertyName</label>
                         @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
                     </div>
                 }
             }
+            <div class="col-12">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+                @Html.ActionLink("Cancelar", "ListaClientes", "Clientes", null, new { @class = "btn btn-secondary" })
+            </div>
 
         </div>
-
-
-
-        <div class="panel-footer">
-            <input type="submit" value="Crear" class="btn btn-primary" />
-            @Html.ActionLink("Cancelar", "ListaClientes", "Clientes", null, new { @class = "btn btn-default" })
-        </div>
+       
     }
 </div>
 

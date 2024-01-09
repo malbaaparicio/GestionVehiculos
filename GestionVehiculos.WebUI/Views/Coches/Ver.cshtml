@@ -9,14 +9,14 @@
         <h3>Ver @Model.Matricula</h3>
     </div>
     @using(Html.BeginForm()) {
-        <div class="panel-body">
+        <div class="mb-3">
             @Html.HiddenFor(z => z.Cocheid)
             @foreach(var property in ViewData.ModelMetadata.Properties) {
                 if(property.PropertyName != "Cocheid" && property.PropertyName != "Reservas") {
-                    <div class="form-group">
-                        <label>@property.PropertyName</label>
-                        @Html.TextBox(property.PropertyName,null,new { @class = "form-control", @readonly = "readonly" })
-                    </div>
+                    
+                    <label class="form-label">@property.PropertyName</label>
+                    @Html.TextBox(property.PropertyName,null,new { @class = "form-control", @readonly = "readonly" })
+                    
                 }
             }
 
