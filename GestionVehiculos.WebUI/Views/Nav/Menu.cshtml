@@ -15,6 +15,11 @@ new { @class = "btn btn-light" })
         controllerName = "Clientes";
         actionName = "ListaClientes";
     }
+    else if(link == "Delegaciones")
+    {
+        controllerName = "Delegaciones";
+        actionName = "ListaDelegaciones";
+    }
 
     @Html.RouteLink(link,new {
         controller = controllerName,

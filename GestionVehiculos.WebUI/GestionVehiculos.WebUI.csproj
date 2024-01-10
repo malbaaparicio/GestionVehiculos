@@ -192,6 +192,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CochesController.cs" />
+    <Compile Include="Controllers\DelegacionesController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -199,6 +200,7 @@
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Models\ListaClientesPaginado.cs" />
     <Compile Include="Models\ListaCochesPaginado.cs" />
+    <Compile Include="Models\ListaDelegacionesPaginado.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -230,6 +232,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Delegaciones\ListaDelegaciones.cshtml" />
+    <Content Include="Views\Shared\DelegacionesSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

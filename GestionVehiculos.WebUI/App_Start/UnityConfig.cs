@@ -45,6 +45,7 @@ namespace GestionVehiculos.WebUI
             // TODO: Register your type's mappings here.
             container.RegisterType<ICoches, GestionaCoches>();
             container.RegisterType<IClientes, GestionaClientes>();
+            container.RegisterType<IDelegaciones, GestionaDelegaciones>();
         }
     }
 }

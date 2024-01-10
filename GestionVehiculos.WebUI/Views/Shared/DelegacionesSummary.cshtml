@@ -1,0 +1,45 @@
+﻿@model GestionVehiculos.WebUI.Models.ListaDelegacionesPaginado
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Localidad</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var delegacion in Model.delegaciones)
+        {
+            <tr>
+                <th scope="row">@delegacion.Delegacionid</th>
+                <td>@delegacion.Nombre</td>
+                <td>@delegacion.Direccion</td>
+                <td>@delegacion.Localidad</td>
+                <td>@delegacion.Telefono</td>
+                <td>@delegacion.Email</td>
+
+                <td>
+                    @Html.ActionLink("Ver", "Ver", "Delegaciones", new { delegacion.Delegacionid }, new { @class = "btn btn-success far fa-eye" })
+
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", "Delegaciones", new { delegacion.Delegacionid }, new { @class = "btn btn-warning fas fa-edit" })
+                </td>
+                <td>
+                    @using (Html.BeginForm("Borrar", "Delegaciones", FormMethod.Post))
+                    {
+                        @Html.Hidden("Delegacionid", delegacion.Delegacionid);
+                        <input type="submit"
+                               class="btn btn-danger far fa-trash-alt"
+                               value="Borrar" />
+                    }
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+

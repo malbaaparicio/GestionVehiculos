@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IClientes.cs" />
     <Compile Include="Abstract\ICoches.cs" />
+    <Compile Include="Abstract\IDelegaciones.cs" />
     <Compile Include="Clientes.cs">
       <DependentUpon>vehiculosModel.tt</DependentUpon>
     </Compile>
@@ -80,6 +81,7 @@
     </Compile>
     <Compile Include="Concrete\GestionaClientes.cs" />
     <Compile Include="Concrete\GestionaCoches.cs" />
+    <Compile Include="Concrete\GestionaDelegaciones.cs" />
     <Compile Include="Delegaciones.cs">
       <DependentUpon>vehiculosModel.tt</DependentUpon>
     </Compile>

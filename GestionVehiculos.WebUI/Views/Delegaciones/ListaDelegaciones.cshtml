@@ -1,0 +1,35 @@
+﻿@model GestionVehiculos.WebUI.Models.ListaDelegacionesPaginado
+
+@{
+    ViewBag.Title = "Vista de delegaciones";
+}
+
+
+<h2>Vista de delegaciones</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create", "Delegaciones", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Restablecer vista", "ListaDelegaciones", new { page = 1 }, new { @class = "selected btn btn-primary" })
+
+</p>
+
+
+@Html.Partial("DelegacionesSummary", Model)
+
+
+<div>
+    @for (int i = 1; i <= Model.pagingInfo.TotalPages; i++)
+    {
+        if (Model.pagingInfo.CurrentPage == i)
+        {
+            @Html.ActionLink(i.ToString(), "ListaDelegaciones", new { filtro = Model.filtro, valor = Model.terminoBusqueda, page = i }, new { @class = "selected btn btn-primary" });
+        }
+        else
+        {
+            @Html.ActionLink(i.ToString(), "ListaDelegaciones", new { filtro = Model.filtro, valor = Model.terminoBusqueda, page = i }, new { @class = "btn btn-default" });
+        }
+
+    }
+    @*@Html.PageLinks(Model.pagingInfo, x => Url.Action("ListaCoches", new { page = x }))*@
+
+</div>
