@@ -1,0 +1,35 @@
+﻿@model GestionVehiculos.Domain.Delegaciones
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Crear nueva delegación</h3>
+    </div>
+    @using (Html.BeginForm("Create", "Delegaciones", FormMethod.Post))
+    {
+
+        <div class="row g-3">
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                if (property.PropertyName != "Delegacionid" && property.PropertyName != "ReservasEntregas" && property.PropertyName != "ReservasRecogidas")
+                {
+                    <div class="col-md-6">
+                        <label class="form-label">@property.PropertyName</label>
+                        @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                    </div>
+                }
+            }
+            <div class="col-12">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+                @Html.ActionLink("Cancelar", "ListaDelegaciones", "Delegaciones", null, new { @class = "btn btn-secondary" })
+            </div>
+
+        </div>
+
+    }
+</div>
+
+

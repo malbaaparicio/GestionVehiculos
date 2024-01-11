@@ -1,0 +1,33 @@
+﻿@model GestionVehiculos.Domain.Delegaciones
+
+@{
+    ViewBag.Title = "Ver";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Ver @Model.Nombre</h3>
+    </div>
+    @using (Html.BeginForm())
+    {
+        <div class="row g-3">
+            @Html.HiddenFor(z => z.Delegacionid)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                if (property.PropertyName != "Delegacionid" && property.PropertyName != "ReservasEntregas" && property.PropertyName != "ReservasRecogidas")
+                {
+                    <div class="col-md-6">
+                        <label class="form-label">@property.PropertyName</label>
+                        @Html.TextBox(property.PropertyName, null, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+
+
+                }
+            }
+            <div class="col-12">
+                @Html.ActionLink("Volver", "ListaDelegaciones", "Delegaciones", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    }
+</div>
+

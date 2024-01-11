@@ -234,6 +234,9 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Delegaciones\ListaDelegaciones.cshtml" />
     <Content Include="Views\Shared\DelegacionesSummary.cshtml" />
+    <Content Include="Views\Delegaciones\Ver.cshtml" />
+    <Content Include="Views\Delegaciones\Edit.cshtml" />
+    <Content Include="Views\Delegaciones\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
