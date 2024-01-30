@@ -48,7 +48,7 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaCochesPaginado = new ListaCochesPaginado()
                 {
                     coches = coches.GetCoches.
-                    Where(p => valor == null || p.Marca.ToLower() == valor.ToLower()).
+                    Where(p => p.Marca.ToLower() == valor.ToLower()).
                     OrderBy(z => z.Cocheid).
                     Skip((page - 1) * pageSize).
                     Take(pageSize),
@@ -71,7 +71,7 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaCochesPaginado = new ListaCochesPaginado()
                 {
                     coches = coches.GetCoches.
-                    Where(p => valor == null || p.Modelo.ToLower() == valor.ToLower()).
+                    Where(p => p.Modelo.ToLower() == valor.ToLower()).
                     OrderBy(z => z.Cocheid).
                     Skip((page - 1) * pageSize).
                     Take(pageSize),
@@ -94,7 +94,7 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaCochesPaginado = new ListaCochesPaginado()
                 {
                     coches = coches.GetCoches.
-                    Where(p => valor == null || p.Matricula.ToLower() == valor.ToLower()).
+                    Where(p => p.Matricula.ToLower() == valor.ToLower()).
                     OrderBy(z => z.Cocheid).
                     Skip((page - 1) * pageSize).
                     Take(pageSize),

@@ -3,11 +3,121 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Dirección</th>
-            <th scope="col">Teléfono</th>
-            <th scope="col">Localidad</th>
-            <th scope="col">Email</th>
+            <th scope="col">
+                <div class="container">
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Nombre
+                        </a>
+                        <div class="dropdown-menu">
+                            @using (Html.BeginForm("ListaDelegaciones", "Delegaciones", FormMethod.Get, new { @class = "px-4 py-3" }))
+                            {
+                                <div class="mb-3">
+                                    <input type="text" name="valor" class="form-control" id="fmNombre" placeholder="Buscar" autocomplete="off">
+                                    @*<input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">*@
+                                    @Html.Hidden("filtro", "Nombre", new { @class = "form-control" })
+                                </div>
+                                <button type="submit" class="btn btn-primary">Aplicar</button>
+                                @*@Html.ActionLink("Aplicar", "ListaCoches", new { valor = "Mercedes", page = 1 }, new { @class = "btn btn-default" })*@
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="container">
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dirección
+                        </a>
+                        <div class="dropdown-menu">
+                            @using (Html.BeginForm("ListaDelegaciones", "Delegaciones", FormMethod.Get, new { @class = "px-4 py-3" }))
+                            {
+                                <div class="mb-3">
+                                    <input type="text" name="valor" class="form-control" id="fmDireccion" placeholder="Buscar" autocomplete="off">
+                                    @*<input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">*@
+                                    @Html.Hidden("filtro", "Dirección", new { @class = "form-control" })
+                                </div>
+                                <button type="submit" class="btn btn-primary">Aplicar</button>
+                                @*@Html.ActionLink("Aplicar", "ListaCoches", new { valor = "Mercedes", page = 1 }, new { @class = "btn btn-default" })*@
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="container">
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Localidad
+                        </a>
+                        <div class="dropdown-menu">
+                            @using (Html.BeginForm("ListaDelegaciones", "Delegaciones", FormMethod.Get, new { @class = "px-4 py-3" }))
+                            {
+                                <div class="mb-3">
+                                    <input type="text" name="valor" class="form-control" id="fmLocalidad" placeholder="Buscar" autocomplete="off">
+                                    @*<input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">*@
+                                    @Html.Hidden("filtro", "Localidad", new { @class = "form-control" })
+                                </div>
+                                <button type="submit" class="btn btn-primary">Aplicar</button>
+                                @*@Html.ActionLink("Aplicar", "ListaCoches", new { valor = "Mercedes", page = 1 }, new { @class = "btn btn-default" })*@
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="container">
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Teléfono
+                        </a>
+                        <div class="dropdown-menu">
+                            @using (Html.BeginForm("ListaDelegaciones", "Delegaciones", FormMethod.Get, new { @class = "px-4 py-3" }))
+                            {
+                                <div class="mb-3">
+                                    <input type="text" name="valor" class="form-control" id="fmTelefono" placeholder="Buscar" autocomplete="off">
+                                    @*<input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">*@
+                                    @Html.Hidden("filtro", "Teléfono", new { @class = "form-control" })
+                                </div>
+                                <button type="submit" class="btn btn-primary">Aplicar</button>
+                                @*@Html.ActionLink("Aplicar", "ListaCoches", new { valor = "Mercedes", page = 1 }, new { @class = "btn btn-default" })*@
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="container">
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Email
+                        </a>
+                        <div class="dropdown-menu">
+                            @using (Html.BeginForm("ListaDelegaciones", "Delegaciones", FormMethod.Get, new { @class = "px-4 py-3" }))
+                            {
+                                <div class="mb-3">
+                                    <input type="text" name="valor" class="form-control" id="fmEmail" placeholder="Buscar" autocomplete="off">
+                                    @*<input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">*@
+                                    @Html.Hidden("filtro", "Email", new { @class = "form-control" })
+                                </div>
+                                <button type="submit" class="btn btn-primary">Aplicar</button>
+                                @*@Html.ActionLink("Aplicar", "ListaCoches", new { valor = "Mercedes", page = 1 }, new { @class = "btn btn-default" })*@
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </th>
         </tr>
     </thead>
     <tbody>

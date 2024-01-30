@@ -14,8 +14,7 @@
                             @using (Html.BeginForm("ListaClientes", "Clientes", FormMethod.Get, new { @class = "px-4 py-3" }))
                             {
                                 <div class="mb-3">
-                                    <input type="text" name="valor" class="form-control" id="fmNombre" placeholder="Buscar" autocomplete="off"
-                                           required="" oninvalid="this.setCustomValidity('Por favor, introduzca un término de búsqueda')" oninput="setCustomValidity('')">
+                                    <input type="text" name="valor" class="form-control" id="fmNombre" placeholder="Buscar" autocomplete="off">
                                     @*<input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">*@
                                     @Html.Hidden("filtro", "Nombre", new { @class = "form-control" })
                                 </div>                                
@@ -38,8 +37,7 @@
                             @using (Html.BeginForm("ListaClientes", "Clientes", FormMethod.Get, new { @class = "px-4 py-3" }))
                             {
                                 <div class="mb-3">
-                                    <input type="text" name="valor" class="form-control" id="fmApellidos" placeholder="Buscar" autocomplete="off"
-                                           required="" oninvalid="this.setCustomValidity('Por favor, introduzca un término de búsqueda')" oninput="setCustomValidity('')">
+                                    <input type="text" name="valor" class="form-control" id="fmApellidos" placeholder="Buscar" autocomplete="off">
                                     @*<input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">*@
                                     @Html.Hidden("filtro", "Apellidos", new { @class = "form-control" })
                                 </div>                                
@@ -62,8 +60,7 @@
                             @using (Html.BeginForm("ListaClientes", "Clientes", FormMethod.Get, new { @class = "px-4 py-3" }))
                             {
                                 <div class="mb-3">
-                                    <input type="text" name="valor" class="form-control" id="fmNif" placeholder="Buscar" autocomplete="off"
-                                           required="" oninvalid="this.setCustomValidity('Por favor, introduzca un término de búsqueda')" oninput="setCustomValidity('')">
+                                    <input type="text" name="valor" class="form-control" id="fmNif" placeholder="Buscar" autocomplete="off">
                                     @*<input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">*@
                                     @Html.Hidden("filtro", "Nif", new { @class = "form-control" })
                                 </div>                                
@@ -86,8 +83,7 @@
                             @using (Html.BeginForm("ListaClientes", "Clientes", FormMethod.Get, new { @class = "px-4 py-3" }))
                             {
                                 <div class="mb-3">
-                                    <input type="text" name="valor" class="form-control" id="fmTelefono" placeholder="Buscar" autocomplete="off"
-                                           required="" oninvalid="this.setCustomValidity('Por favor, introduzca un término de búsqueda')" oninput="setCustomValidity('')">
+                                    <input type="text" name="valor" class="form-control" id="fmTelefono" placeholder="Buscar" autocomplete="off">
                                     @*<input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">*@
                                     @Html.Hidden("filtro", "Telefono", new { @class = "form-control" })
                                 </div>                                
@@ -110,8 +106,7 @@
                             @using (Html.BeginForm("ListaClientes", "Clientes", FormMethod.Get, new { @class = "px-4 py-3" }))
                             {
                                 <div class="mb-3">
-                                    <input type="text" name="valor" class="form-control" id="fmEmail" placeholder="Buscar" autocomplete="off"
-                                           required="" oninvalid="this.setCustomValidity('Por favor, introduzca un término de búsqueda')" oninput="setCustomValidity('')">
+                                    <input type="text" name="valor" class="form-control" id="fmEmail" placeholder="Buscar" autocomplete="off">
                                     @*<input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">*@
                                     @Html.Hidden("filtro", "Email", new { @class = "form-control" })
                                 </div>                               

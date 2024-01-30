@@ -14,8 +14,7 @@
                             @using (Html.BeginForm("ListaCoches", "Coches", FormMethod.Get, new { @class = "px-4 py-3" }))
                             {
                                 <div class="mb-3">
-                                    <input type="text" name="valor" class="form-control" id="fmMarca" placeholder="Buscar" autocomplete="off" 
-                                           required="" oninvalid="this.setCustomValidity('Por favor, introduzca un término de búsqueda')" oninput="setCustomValidity('')">
+                                    <input type="text" name="valor" class="form-control" id="fmMarca" placeholder="Buscar" autocomplete="off">
                                     @*<input type="hidden" name="filtro" class="form-control" id="filtroMarca" value="Marca">*@        
                                     @Html.Hidden("filtro","Marca", new {@class = "form-control"})
                                 </div>                                
@@ -38,9 +37,9 @@
                             @using (Html.BeginForm("ListaCoches", "Coches", FormMethod.Get, new { @class = "px-4 py-3" }))
                             {
                                 <div class="mb-3">
-                                    <input type="text" name="valor" class="form-control" id="fmModelo" placeholder="Buscar" autocomplete="off"
-                                            required="" oninvalid="this.setCustomValidity('Por favor, introduzca un término de búsqueda')" oninput="setCustomValidity('')">
-                                    <input type="hidden" name="filtro" class="form-control" id="filtroModelo" value="Modelo">
+                                    <input type="text" name="valor" class="form-control" id="fmModelo" placeholder="Buscar" autocomplete="off">
+                                    @*<input type="hidden" name="filtro" class="form-control" id="filtroModelo" value="Modelo">*@
+                                    @Html.Hidden("filtro", "Modelo", new { @class = "form-control" })
                                 </div>                                
                                 <button type="submit" class="btn btn-primary">Aplicar</button>
                                 @*@Html.ActionLink("Aplicar", "ListaCoches", new { valor = "Mercedes", page = 1 }, new { @class = "btn btn-default" })*@
@@ -60,9 +59,9 @@
                             @using (Html.BeginForm("ListaCoches", "Coches", FormMethod.Get, new { @class = "px-4 py-3" }))
                             {
                                 <div class="mb-3">
-                                    <input type="text" name="valor" class="form-control" id="fmMatricula" placeholder="Buscar" autocomplete="off"
-                                           required="" oninvalid="this.setCustomValidity('Por favor, introduzca un término de búsqueda')" oninput="setCustomValidity('')">
-                                    <input type="hidden" name="filtro" class="form-control" id="filtroMatricula" value="Matrícula">
+                                    <input type="text" name="valor" class="form-control" id="fmMatricula" placeholder="Buscar" autocomplete="off">
+                                    @*<input type="hidden" name="filtro" class="form-control" id="filtroMatricula" value="Matrícula">*@
+                                    @Html.Hidden("filtro", "Matrícula", new { @class = "form-control" })
                                 </div>                                
                                 <button type="submit" class="btn btn-primary">Aplicar</button>
                                 @*@Html.ActionLink("Aplicar", "ListaCoches", new { valor = "Mercedes", page = 1 }, new { @class = "btn btn-default" })*@

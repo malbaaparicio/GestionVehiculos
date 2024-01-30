@@ -48,7 +48,7 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaClientesPaginado = new ListaClientesPaginado()
                 {
                     clientes = clientes.GetClientes.
-                    Where(p => valor == null || p.Nombre.ToLower() == valor.ToLower()).
+                    Where(p => p.Nombre.ToLower() == valor.ToLower()).
                     OrderBy(z => z.Clienteid).
                     Skip((page - 1) * pageSize).
                     Take(pageSize),
@@ -71,7 +71,7 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaClientesPaginado = new ListaClientesPaginado()
                 {
                     clientes = clientes.GetClientes.
-                    Where(p => valor == null || p.Apellidos.ToLower().Contains(valor.ToLower())).
+                    Where(p => p.Apellidos.ToLower().Contains(valor.ToLower())).
                     OrderBy(z => z.Clienteid).
                     Skip((page - 1) * pageSize).
                     Take(pageSize),
@@ -94,7 +94,7 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaClientesPaginado = new ListaClientesPaginado()
                 {
                     clientes = clientes.GetClientes.
-                    Where(p => valor == null || p.NIF.ToLower() == valor.ToLower()).
+                    Where(p => p.NIF.ToLower() == valor.ToLower()).
                     OrderBy(z => z.Clienteid).
                     Skip((page - 1) * pageSize).
                     Take(pageSize),
@@ -117,7 +117,7 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaClientesPaginado = new ListaClientesPaginado()
                 {
                     clientes = clientes.GetClientes.
-                    Where(p => valor == null || p.Telefono.ToLower() == valor.ToLower()).
+                    Where(p => p.Telefono.ToLower() == valor.ToLower()).
                     OrderBy(z => z.Clienteid).
                     Skip((page - 1) * pageSize).
                     Take(pageSize),
@@ -140,7 +140,7 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaClientesPaginado = new ListaClientesPaginado()
                 {
                     clientes = clientes.GetClientes.
-                    Where(p => valor == null || p.Email.ToLower() == valor.ToLower()).
+                    Where(p => p.Email.ToLower() == valor.ToLower()).
                     OrderBy(z => z.Clienteid).
                     Skip((page - 1) * pageSize).
                     Take(pageSize),

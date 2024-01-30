@@ -29,7 +29,7 @@ namespace GestionVehiculos.WebUI.Controllers
                 listaDelegacionesPaginado = new ListaDelegacionesPaginado()
                 {
                     delegaciones = delegaciones.GetDelegaciones.
-                    OrderBy(z=>z.Delegacionid).
+                    OrderBy(z => z.Delegacionid).
                     Skip((page - 1) * pageSize).
                     Take(pageSize),
 
@@ -38,6 +38,116 @@ namespace GestionVehiculos.WebUI.Controllers
                         CurrentPage = page,
                         ItemsPerPage = pageSize,
                         TotalItems = delegaciones.GetDelegaciones.Count()
+                    },
+                    filtro = filtro,
+                    terminoBusqueda = valor
+                };
+            }
+            else if(filtro == "Nombre")
+            {
+                listaDelegacionesPaginado = new ListaDelegacionesPaginado()
+                {
+                    delegaciones = delegaciones.GetDelegaciones. 
+                    Where(p => p.Nombre.ToLower().Contains(valor.ToLower())).
+                    OrderBy(z => z.Delegacionid).
+                    Skip((page - 1) * pageSize).
+                    Take(pageSize),
+
+                    pagingInfo = new PagingInfo()
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = pageSize,
+                        TotalItems = valor == null ?
+                        delegaciones.GetDelegaciones.Count() : 
+                        delegaciones.GetDelegaciones.Where(z => z.Nombre.ToLower().Contains(valor.ToLower())).Count()
+                    },
+                    filtro = filtro,
+                    terminoBusqueda = valor
+                };
+            }
+            else if (filtro == "Dirección")
+            {
+                listaDelegacionesPaginado = new ListaDelegacionesPaginado()
+                {
+                    delegaciones = delegaciones.GetDelegaciones.
+                    Where(p => p.Direccion.ToLower().Contains(valor.ToLower())).
+                    OrderBy(z => z.Delegacionid).
+                    Skip((page - 1) * pageSize).
+                    Take(pageSize),
+
+                    pagingInfo = new PagingInfo()
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = pageSize,
+                        TotalItems = valor == null ?
+                        delegaciones.GetDelegaciones.Count() :
+                        delegaciones.GetDelegaciones.Where(z => z.Direccion.ToLower().Contains(valor.ToLower())).Count()
+                    },
+                    filtro = filtro,
+                    terminoBusqueda = valor
+                };
+            }
+            else if (filtro == "Teléfono")
+            {
+                listaDelegacionesPaginado = new ListaDelegacionesPaginado()
+                {
+                    delegaciones = delegaciones.GetDelegaciones.
+                    Where(p => p.Telefono.ToLower() == valor.ToLower()).
+                    OrderBy(z => z.Delegacionid).
+                    Skip((page - 1) * pageSize).
+                    Take(pageSize),
+
+                    pagingInfo = new PagingInfo()
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = pageSize,
+                        TotalItems = valor == null ?
+                        delegaciones.GetDelegaciones.Count() :
+                        delegaciones.GetDelegaciones.Where(z => z.Telefono.ToLower() == valor.ToLower()).Count()
+                    },
+                    filtro = filtro,
+                    terminoBusqueda = valor
+                };
+            }
+            else if (filtro == "Localidad")
+            {
+                listaDelegacionesPaginado = new ListaDelegacionesPaginado()
+                {
+                    delegaciones = delegaciones.GetDelegaciones.
+                    Where(p => p.Localidad.ToLower().Contains(valor.ToLower())).
+                    OrderBy(z => z.Delegacionid).
+                    Skip((page - 1) * pageSize).
+                    Take(pageSize),
+
+                    pagingInfo = new PagingInfo()
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = pageSize,
+                        TotalItems = valor == null ?
+                        delegaciones.GetDelegaciones.Count() :
+                        delegaciones.GetDelegaciones.Where(z => z.Localidad.ToLower().Contains(valor.ToLower())).Count()
+                    },
+                    filtro = filtro,
+                    terminoBusqueda = valor
+                };
+            }
+            else if (filtro == "Email")
+            {
+                listaDelegacionesPaginado = new ListaDelegacionesPaginado()
+                {
+                    delegaciones = delegaciones.GetDelegaciones.
+                    Where(p => p.Email.ToLower() == valor.ToLower()).
+                    OrderBy(z => z.Delegacionid).
+                    Skip((page - 1) * pageSize).
+                    Take(pageSize),
+
+                    pagingInfo = new PagingInfo()
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = pageSize,
+                        TotalItems = valor == null ?
+                        delegaciones.GetDelegaciones.Count() :
+                        delegaciones.GetDelegaciones.Where(z => z.Email.ToLower() == valor.ToLower()).Count()
                     },
                     filtro = filtro,
                     terminoBusqueda = valor
