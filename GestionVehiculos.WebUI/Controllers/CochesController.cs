@@ -23,7 +23,7 @@ namespace GestionVehiculos.WebUI.Controllers
         public ViewResult ListaCoches(string filtro, string valor, int page = 1)
         {
             ListaCochesPaginado listaCochesPaginado = null;
-            if(filtro == null)
+            if(filtro == null || string.IsNullOrEmpty(valor))
             {
                 listaCochesPaginado = new ListaCochesPaginado()
                 {

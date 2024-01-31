@@ -46,6 +46,7 @@ namespace GestionVehiculos.WebUI
             container.RegisterType<ICoches, GestionaCoches>();
             container.RegisterType<IClientes, GestionaClientes>();
             container.RegisterType<IDelegaciones, GestionaDelegaciones>();
+            container.RegisterType<IReservas, GestionaReservas>();
         }
     }
 }

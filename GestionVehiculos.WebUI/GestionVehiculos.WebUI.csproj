@@ -194,10 +194,12 @@
     <Compile Include="Controllers\CochesController.cs" />
     <Compile Include="Controllers\DelegacionesController.cs" />
     <Compile Include="Controllers\NavController.cs" />
+    <Compile Include="Controllers\ReservasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
+    <Compile Include="Models\ListaReservasPaginado.cs" />
     <Compile Include="Models\ListaClientesPaginado.cs" />
     <Compile Include="Models\ListaCochesPaginado.cs" />
     <Compile Include="Models\ListaDelegacionesPaginado.cs" />
@@ -237,6 +239,8 @@
     <Content Include="Views\Delegaciones\Ver.cshtml" />
     <Content Include="Views\Delegaciones\Edit.cshtml" />
     <Content Include="Views\Delegaciones\Create.cshtml" />
+    <Content Include="Views\Reservas\ListaReservas.cshtml" />
+    <Content Include="Views\Shared\ReservasSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

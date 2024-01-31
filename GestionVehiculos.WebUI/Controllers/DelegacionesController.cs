@@ -24,7 +24,7 @@ namespace GestionVehiculos.WebUI.Controllers
         public ViewResult ListaDelegaciones(string filtro, string valor, int page = 1)
         {
             ListaDelegacionesPaginado listaDelegacionesPaginado = null;
-            if(filtro == null)
+            if(filtro == null || string.IsNullOrEmpty(valor))
             {
                 listaDelegacionesPaginado = new ListaDelegacionesPaginado()
                 {

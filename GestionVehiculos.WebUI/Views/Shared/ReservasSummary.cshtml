@@ -1,0 +1,51 @@
+﻿@model GestionVehiculos.WebUI.Models.ListaReservasPaginado
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Fecha reserva</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Centro recogida</th>
+            <th scope="col">Fecha devolución</th>
+            <th scope="col">Centro devolución</th>
+            <th scope="col">Vehículo</th>
+            <th scope="col">Observaciones</th>
+            <th scope="col">Depósito lleno</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reserva in Model.reservas)
+        {
+            <tr>
+                <th scope="row">@reserva.Reservarid</th>
+                <td>@reserva.FechaReserva</td>
+                <td>@reserva.Clientes.Nombre @reserva.Clientes.Apellidos</td>
+                <td>@reserva.DelegacionesEntrega.Nombre</td>
+                <td>@reserva.FechaDevolucion</td>
+                <td></td>
+                <td>@reserva.Coches.Marca @reserva.Coches.Modelo</td>
+                <td>@reserva.Observaciones</td>
+                <td>@reserva.DepositoLleno</td>
+
+                <td>
+                    @Html.ActionLink("Ver", "Ver", "Delegaciones", new { reserva.Reservarid }, new { @class = "btn btn-success far fa-eye" })
+
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", "Delegaciones", new { reserva.Reservarid }, new { @class = "btn btn-warning fas fa-edit" })
+                </td>
+                <td>
+                    @using (Html.BeginForm("Borrar", "Delegaciones", FormMethod.Post))
+                    {
+                        @Html.Hidden("Delegacionid", reserva.Reservarid);
+                        <input type="submit"
+                               class="btn btn-danger far fa-trash-alt"
+                               value="Borrar" />
+                    }
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
