@@ -241,6 +241,7 @@
     <Content Include="Views\Delegaciones\Create.cshtml" />
     <Content Include="Views\Reservas\ListaReservas.cshtml" />
     <Content Include="Views\Shared\ReservasSummary.cshtml" />
+    <Content Include="Views\Reservas\Ver.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

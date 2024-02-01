@@ -1,4 +1,5 @@
-﻿using GestionVehiculos.Domain.Abstract;
+﻿using GestionVehiculos.Domain;
+using GestionVehiculos.Domain.Abstract;
 using GestionVehiculos.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,12 @@ namespace GestionVehiculos.WebUI.Controllers
                 };
             }
             return View(listaReservasPaginado);
+        }
+
+        public ViewResult Ver(int reservaId)
+        {
+            Reservas reserva = reservas.GetReservas.Where(z=>z.Reservarid == reservaId).FirstOrDefault();
+            return View(reserva);
         }
     }
 }

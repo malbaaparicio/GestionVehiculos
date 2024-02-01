@@ -20,16 +20,38 @@
                 <th scope="row">@reserva.Reservarid</th>
                 <td>@reserva.FechaReserva</td>
                 <td>@reserva.Clientes.Nombre @reserva.Clientes.Apellidos</td>
-                <td>@reserva.DelegacionesEntrega.Nombre</td>
+                @if (reserva.DelegacionesEntrega != null)
+                {
+                    <td>@reserva.DelegacionesEntrega.Nombre</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+
                 <td>@reserva.FechaDevolucion</td>
-                <td></td>
+                @if (reserva.DelegacionesRecogida != null)
+                {
+                    <td>@reserva.DelegacionesRecogida.Nombre</td>
+                }
+                else
+                {
+                    <td></td>
+                }
                 <td>@reserva.Coches.Marca @reserva.Coches.Modelo</td>
                 <td>@reserva.Observaciones</td>
-                <td>@reserva.DepositoLleno</td>
+                @if (reserva.DepositoLleno == true)
+                {
+                    <td>Si</td>
+                }
+                else
+                {
+                    <td>No</td>
+                }
+
 
                 <td>
-                    @Html.ActionLink("Ver", "Ver", "Delegaciones", new { reserva.Reservarid }, new { @class = "btn btn-success far fa-eye" })
-
+                    @Html.ActionLink("Ver", "Ver", "Reservas", new { reservaId = reserva.Reservarid }, new { @class = "btn btn-success far fa-eye" })                   
                 </td>
                 <td>
                     @Html.ActionLink("Editar", "Edit", "Delegaciones", new { reserva.Reservarid }, new { @class = "btn btn-warning fas fa-edit" })
