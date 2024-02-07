@@ -1,4 +1,5 @@
 ﻿@model GestionVehiculos.Domain.Reservas
+@using GestionVehiculos.Domain.Abstract
 
 @{
     ViewBag.Title = "Edit";
@@ -21,21 +22,22 @@
                     {
                         <div class="col-md-6">
                             <label class="form-label">Cliente</label>
-                            @Html.TextBox(property.PropertyName, Model.Clientes.Nombre + " " + Model.Clientes.Apellidos, new { @class = "form-control" })
+                            @Html.DropDownListFor(m => m.Clienteid, (IEnumerable<SelectListItem>)ViewBag.Clientes, new { @class = "form-control" })
                         </div>
                     }
                     else if (property.PropertyName == "Coches")
                     {
                         <div class="col-md-6">
                             <label class="form-label">Vehículo</label>
-                            @Html.TextBox(property.PropertyName, Model.Coches.Marca + " " + Model.Coches.Modelo, new { @class = "form-control" })
+                            @*@Html.TextBox(property.PropertyName, Model.Coches.Marca + " " + Model.Coches.Modelo, new { @class = "form-control" })*@
+                            @Html.DropDownListFor(m => m.Vehiculoid, (IEnumerable<SelectListItem>)ViewBag.Coches, new { @class = "form-control" })
                         </div>
                     }
                     else if (property.PropertyName == "DelegacionesEntrega")
                     {
                         <div class="col-md-6">
                             <label class="form-label">Centro de recogida</label>
-                            @Html.TextBox(property.PropertyName, Model.DelegacionesEntrega.Nombre, new { @class = "form-control" })
+                            @Html.DropDownListFor(m => m.CentroRecogidaid, (IEnumerable<SelectListItem>)ViewBag.Delegaciones, new { @class = "form-control" })
                         </div>
                     }
                     else if (property.PropertyName == "DelegacionesRecogida")
@@ -44,43 +46,48 @@
                         {
                             <div class="col-md-6">
                                 <label class="form-label">Centro de devolución</label>
-                                @Html.TextBox(property.PropertyName, Model.DelegacionesRecogida.Nombre, new { @class = "form-control" })
+                                @Html.DropDownListFor(m => m.CentroDevolucionid, (IEnumerable<SelectListItem>)ViewBag.Delegaciones, new { @class = "form-control" })
                             </div>
                         }
                         else
                         {
                             <div class="col-md-6">
                                 <label class="form-label">Centro de devolución</label>
-                                @Html.TextBox(property.PropertyName, "", new { @class = "form-control" })
+                                @Html.DropDownListFor(m => m.CentroDevolucionid, (IEnumerable<SelectListItem>)ViewBag.Delegaciones, "Seleccione un centro de devolución", new { @class = "form-control" })
                             </div>
                         }
 
                     }
                     else if (property.PropertyName == "DepositoLleno")
-                    {
-
-                        List<SelectListItem> listaCombo = new List<SelectListItem>{
-                                                            new SelectListItem { Text = "Sí", Value = "1" },
-                                                            new SelectListItem { Text = "No", Value = "0" }
-                                                                };
+                    {                      
 
                         if (Model.DepositoLleno == true)
                         {
-                            listaCombo.Where(z => z.Value == "1").FirstOrDefault().Selected = true;                           
+                           
                             <div class="col-md-6">
-                                <label class="form-label">Depósito lleno</label>                               
-                                @Html.DropDownList(property.PropertyName, listaCombo, new { @class = "form-control" })
+                                <label for=@property.PropertyName class="form-label">Depósito lleno</label>
+                                @Html.DropDownListFor(m => m.DepositoLleno, new List<SelectListItem>() {
+                                   new SelectListItem { Text = "Si", Value = "true", Selected = true},
+                                   new SelectListItem { Text = "No", Value = "false"}
+                                }, new { @class = "form-control" })
 
                             </div>
+                            
                         }
                         else
-                        {                           
-                            listaCombo.Where(z => z.Value == "0").FirstOrDefault().Selected = true;
+                        {
+                           
                             <div class="col-md-6">
-                                <label class="form-label">Depósito lleno</label>                               
-                                @Html.DropDownList(property.PropertyName, listaCombo, new { @class = "form-control" })
+                                <label for=@property.PropertyName class="form-label">Depósito lleno</label>
+                                @Html.DropDownListFor(m => m.DepositoLleno, new List<SelectListItem>() {
+                                   new SelectListItem { Text = "Si", Value = "true"},
+                                   new SelectListItem { Text = "No", Value = "false", Selected = true}
+                                }, new { @class = "form-control" })
+
                             </div>
+
                         }
+                        
                     }
                     else if (property.PropertyName == "FechaReserva")
                     {
@@ -91,7 +98,7 @@
                     }
                     else if (property.PropertyName == "FechaDevolucion")
                     {
-                       
+
                         <div class="col-md-6">
                             <label class="form-label">Fecha de devolución</label>
                             @{
@@ -99,8 +106,8 @@
                             }
 
                             @Html.TextBox(property.PropertyName, formattedDateTime, new { @class = "form-control", @type = "datetime-local" })
-                        </div>               
-                        
+                        </div>
+
                     }
                     else
                     {
