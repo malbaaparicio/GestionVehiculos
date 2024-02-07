@@ -1,41 +1,41 @@
 ﻿@model GestionVehiculos.Domain.Reservas
 
 @{
-    ViewBag.Title = "Ver";
+    ViewBag.Title = "Edit";
 }
 
 <div class="panel">
     <div class="panel-heading">
-        <h3>Ver @Model.FechaReserva</h3>
+        <h3>Editar @Model.FechaReserva</h3>
     </div>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit", "Reservas", FormMethod.Post))
     {
         <div class="row g-3">
             @Html.HiddenFor(z => z.Reservarid)
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
                 if (property.PropertyName != "Reservarid" && property.PropertyName != "Clienteid" && property.PropertyName != "CentroRecogidaid"
-                    && property.PropertyName != "CentroDevolucionid" && property.PropertyName != "Vehiculoid")
+                     && property.PropertyName != "CentroDevolucionid" && property.PropertyName != "Vehiculoid")
                 {
                     if (property.PropertyName == "Clientes")
                     {
                         <div class="col-md-6">
                             <label class="form-label">Cliente</label>
-                            @Html.TextBox(property.PropertyName, Model.Clientes.Nombre + " " + Model.Clientes.Apellidos, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.TextBox(property.PropertyName, Model.Clientes.Nombre + " " + Model.Clientes.Apellidos, new { @class = "form-control" })
                         </div>
                     }
                     else if (property.PropertyName == "Coches")
                     {
                         <div class="col-md-6">
                             <label class="form-label">Vehículo</label>
-                            @Html.TextBox(property.PropertyName, Model.Coches.Marca + " " + Model.Coches.Modelo, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.TextBox(property.PropertyName, Model.Coches.Marca + " " + Model.Coches.Modelo, new { @class = "form-control" })
                         </div>
                     }
                     else if (property.PropertyName == "DelegacionesEntrega")
                     {
                         <div class="col-md-6">
                             <label class="form-label">Centro de recogida</label>
-                            @Html.TextBox(property.PropertyName, Model.DelegacionesEntrega.Nombre, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.TextBox(property.PropertyName, Model.DelegacionesEntrega.Nombre, new { @class = "form-control" })
                         </div>
                     }
                     else if (property.PropertyName == "DelegacionesRecogida")
@@ -44,32 +44,41 @@
                         {
                             <div class="col-md-6">
                                 <label class="form-label">Centro de devolución</label>
-                                @Html.TextBox(property.PropertyName, Model.DelegacionesRecogida.Nombre, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.TextBox(property.PropertyName, Model.DelegacionesRecogida.Nombre, new { @class = "form-control" })
                             </div>
                         }
                         else
                         {
                             <div class="col-md-6">
                                 <label class="form-label">Centro de devolución</label>
-                                @Html.TextBox(property.PropertyName, "", new { @class = "form-control", @readonly = "readonly" })
+                                @Html.TextBox(property.PropertyName, "", new { @class = "form-control" })
                             </div>
                         }
 
                     }
                     else if (property.PropertyName == "DepositoLleno")
                     {
+
+                        List<SelectListItem> listaCombo = new List<SelectListItem>{
+                                                            new SelectListItem { Text = "Sí", Value = "1" },
+                                                            new SelectListItem { Text = "No", Value = "0" }
+                                                                };
+
                         if (Model.DepositoLleno == true)
                         {
+                            listaCombo.Where(z => z.Value == "1").FirstOrDefault().Selected = true;                           
                             <div class="col-md-6">
-                                <label class="form-label">Depósito lleno</label>
-                                @Html.TextBox(property.PropertyName, "Si", new { @class = "form-control", @readonly = "readonly" })
+                                <label class="form-label">Depósito lleno</label>                               
+                                @Html.DropDownList(property.PropertyName, listaCombo, new { @class = "form-control" })
+
                             </div>
                         }
                         else
-                        {
+                        {                           
+                            listaCombo.Where(z => z.Value == "0").FirstOrDefault().Selected = true;
                             <div class="col-md-6">
-                                <label class="form-label">Depósito lleno</label>
-                                @Html.TextBox(property.PropertyName, "No", new { @class = "form-control", @readonly = "readonly" })
+                                <label class="form-label">Depósito lleno</label>                               
+                                @Html.DropDownList(property.PropertyName, listaCombo, new { @class = "form-control" })
                             </div>
                         }
                     }
@@ -77,31 +86,39 @@
                     {
                         <div class="col-md-6">
                             <label class="form-label">Fecha de reserva</label>
-                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.TextBox(property.PropertyName, Model.FechaReserva.ToString("yyyy-MM-ddTHH:mm"), new { @class = "form-control", @type = "datetime-local" })
                         </div>
                     }
                     else if (property.PropertyName == "FechaDevolucion")
                     {
+                       
                         <div class="col-md-6">
                             <label class="form-label">Fecha de devolución</label>
-                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control", @readonly = "readonly" })
-                        </div>
+                            @{
+                                string formattedDateTime = Model.FechaDevolucion != null ? Model.FechaDevolucion.Value.ToString("yyyy-MM-ddTHH:mm") : string.Empty;
+                            }
+
+                            @Html.TextBox(property.PropertyName, formattedDateTime, new { @class = "form-control", @type = "datetime-local" })
+                        </div>               
+                        
                     }
                     else
                     {
                         <div class="col-md-6">
                             <label class="form-label">@property.PropertyName</label>
-                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
                         </div>
                     }
-
-
 
                 }
             }
             <div class="col-12">
-                @Html.ActionLink("Volver", "ListaReservas", "Reservas", null, new { @class = "btn btn-primary" })
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                @Html.ActionLink("Cancelar", "ListaReservas", "Reservas", null, new { @class = "btn btn-secondary" })
             </div>
+
         </div>
+
     }
 </div>
+

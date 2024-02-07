@@ -50,5 +50,12 @@ namespace GestionVehiculos.WebUI.Controllers
             Reservas reserva = reservas.GetReservas.Where(z=>z.Reservarid == reservaId).FirstOrDefault();
             return View(reserva);
         }
+
+        public ViewResult Edit(int reservaId)
+        {
+            Reservas reserva = reservas.GetReservas.Where(z => z.Reservarid == reservaId).FirstOrDefault();
+            return View(reserva);
+        }
+
     }
 }

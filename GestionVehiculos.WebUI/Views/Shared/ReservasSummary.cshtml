@@ -54,7 +54,7 @@
                     @Html.ActionLink("Ver", "Ver", "Reservas", new { reservaId = reserva.Reservarid }, new { @class = "btn btn-success far fa-eye" })                   
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", "Delegaciones", new { reserva.Reservarid }, new { @class = "btn btn-warning fas fa-edit" })
+                    @Html.ActionLink("Editar", "Edit", "Reservas", new { reservaId = reserva.Reservarid }, new { @class = "btn btn-warning fas fa-edit" })
                 </td>
                 <td>
                     @using (Html.BeginForm("Borrar", "Delegaciones", FormMethod.Post))
