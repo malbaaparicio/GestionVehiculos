@@ -78,5 +78,67 @@ namespace GestionVehiculos.WebUI.Controllers
             return View(reserva);
         }
 
+        [HttpPost]
+        public ActionResult Edit(Reservas reserva)
+        {
+            if (ModelState.IsValid)
+            {
+                reservas.SaveReserva(reserva);
+                TempData["mensaje"] = "La reserva ha sido actualizada";
+                return RedirectToAction("ListaReservas");
+            }
+            else
+            {
+                return View(reserva);
+            }
+        }
+
+        public ViewResult Create()
+        {
+            ViewBag.Coches = coches.GetCoches.Select(z => new SelectListItem
+            {
+                Text = z.Marca + " " + z.Modelo + " " + z.Matricula,
+                Value = z.Cocheid.ToString()
+            });
+            ViewBag.Clientes = clientes.GetClientes.Select(z => new SelectListItem
+            {
+                Text = z.Nombre + " " + z.Apellidos,
+                Value = z.Clienteid.ToString()
+            });
+            ViewBag.Delegaciones = delegaciones.GetDelegaciones.Select(z => new SelectListItem
+            {
+                Text = z.Nombre,
+                Value = z.Delegacionid.ToString()
+            });
+            return View(new Reservas());
+        }
+
+        [HttpPost]
+        public ActionResult Create(Reservas reserva)
+        {
+            if (ModelState.IsValid)
+            {
+                reservas.CrearReserva(reserva);
+                TempData["mensaje"] = "La reserva " + reserva.FechaReserva + " ha sido creada";
+                return RedirectToAction("ListaReservas");
+            }
+            else
+            {
+                return View(reserva);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Borrar(Reservas reserva)
+        {
+            Reservas reservaBorrar = reservas.BorrarReserva(reserva);
+            if (reservaBorrar != null)
+            {
+                TempData["mensaje"] = "La reserva " + reservaBorrar.FechaReserva + " ha sido borrada";
+
+            }
+            return RedirectToAction("ListaReservas");
+        }
+
     }
 }

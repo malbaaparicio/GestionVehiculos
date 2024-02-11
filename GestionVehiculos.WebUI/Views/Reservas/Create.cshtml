@@ -1,0 +1,99 @@
+﻿@model GestionVehiculos.Domain.Reservas
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Crear nueva reserva</h3>
+    </div>
+    @using (Html.BeginForm("Create", "Reservas", FormMethod.Post))
+    {
+
+        <div class="row g-3">
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                if (property.PropertyName != "Reservarid" && property.PropertyName != "Clienteid" && property.PropertyName != "CentroRecogidaid"
+                      && property.PropertyName != "CentroDevolucionid" && property.PropertyName != "Vehiculoid")
+                {
+                    if (property.PropertyName == "Clientes")
+                    {
+                        <div class="col-md-6">
+                            <label class="form-label">Cliente</label>
+                            @Html.DropDownListFor(m => m.Clienteid, (IEnumerable<SelectListItem>)ViewBag.Clientes, "Seleccione el cliente", new { @class = "form-control" })
+                        </div>
+                    }
+                    else if (property.PropertyName == "Coches")
+                    {
+                        <div class="col-md-6">
+                            <label class="form-label">Vehículo</label>
+                            @*@Html.TextBox(property.PropertyName, Model.Coches.Marca + " " + Model.Coches.Modelo, new { @class = "form-control" })*@
+                            @Html.DropDownListFor(m => m.Vehiculoid, (IEnumerable<SelectListItem>)ViewBag.Coches, "Seleccione el vehículo a alquilar", new { @class = "form-control" })
+                        </div>
+                    }
+                    else if (property.PropertyName == "DelegacionesEntrega")
+                    {
+                        <div class="col-md-6">
+                            <label class="form-label">Centro de recogida</label>
+                            @Html.DropDownListFor(m => m.CentroRecogidaid, (IEnumerable<SelectListItem>)ViewBag.Delegaciones, "Seleccione un centro de recogida", new { @class = "form-control" })
+                        </div>
+                    }
+                    else if (property.PropertyName == "DelegacionesRecogida")
+                    {
+                        <div class="col-md-6">
+                            <label class="form-label">Centro de devolución</label>
+                            @Html.DropDownListFor(m => m.CentroDevolucionid, (IEnumerable<SelectListItem>)ViewBag.Delegaciones, "Seleccione un centro de devolución", new { @class = "form-control" })
+                        </div>
+
+
+                    }
+                    else if (property.PropertyName == "DepositoLleno")
+                    {
+                        <div class="col-md-6">
+                            <label for=@property.PropertyName class="form-label">Depósito lleno</label>
+                            @Html.DropDownListFor(m => m.DepositoLleno, new List<SelectListItem>() {
+                               new SelectListItem { Text = "Si", Value = "true", Selected = true},
+                               new SelectListItem { Text = "No", Value = "false"}
+                            }, new { @class = "form-control" })
+
+                        </div>                        
+
+                    }
+                    else if (property.PropertyName == "FechaReserva")
+                    {
+                        <div class="col-md-6">
+                            <label class="form-label">Fecha de reserva</label>                           
+                            @Html.TextBox(property.PropertyName, string.Empty, new { @class = "form-control", @type = "datetime-local" })
+                        </div>
+                    }
+                    else if (property.PropertyName == "FechaDevolucion")
+                    {
+
+                        <div class="col-md-6">
+                            <label class="form-label">Fecha de devolución</label>
+                            @Html.TextBox(property.PropertyName, string.Empty, new { @class = "form-control", @type = "datetime-local" })
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="col-md-6">
+                            <label class="form-label">@property.PropertyName</label>
+                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                        </div>
+                    }
+
+                }
+
+            }
+            <div class="col-12">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+                @Html.ActionLink("Cancelar", "ListaReservas", "Reservas", null, new { @class = "btn btn-secondary" })
+            </div>
+
+        </div>
+
+    }
+</div>
+
